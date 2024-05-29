@@ -3,12 +3,12 @@ $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,"dbcrud");
 if(isset($_POST['submit']))
 {
-$pid=$_POST['productID'];
-$name = $_POST['name'];
-$quantity = $_POST['quantity'];
-$price = $_POST['price'];
+$pid=$_POST['id'];
+$name = $_POST['ProductName'];
+$quantity = $_POST['Quantity'];
+$price = $_POST['UnitPrice'];
 $supplier = $_POST['Supplier'];
-$sql = "insert into inventory(ProductName,Quantity,UnitPrice,Supplier)values(' $name', $quantity, $price,'$supplier')";
+$sql = "insert into inventory(id,ProductName,Quantity,UnitPrice,Supplier)values('$pid',' $name', $quantity, $price,'$supplier')";
 if(mysqli_query($connection,$sql))
 {
 echo '<script> location.replace("index.php")</script>';
@@ -40,6 +40,12 @@ echo "Some thing Error" . $connection->error;
 <div class="card-body">
 <form action="add.php" method="post">
 <div class="form-group">
+<label>
+    Product ID
+</label>
+<input type="text" name="productID" class="form-control"  placeholder="Enter Product ID">
+</div>
+<div class="form-group">
 <label>Name</label>
 <input type="text" name="name" class="form-control"  placeholder="Enter Product Name">
 </div>
@@ -65,3 +71,5 @@ echo "Some thing Error" . $connection->error;
 </div>
 </body>
 </html>
+
+
