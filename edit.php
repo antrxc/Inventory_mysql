@@ -2,11 +2,11 @@
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,"dbcrud");
 $edit = $_GET['edit'];
-$sql = "select * from inventory where '#ID' = '$edit' ";
+$sql = "select * from inventory where id= '$edit' ";
 $run = mysqli_query($connection,$sql);
 while($row=mysqli_fetch_array($run))
 {
-    $pid = $row['#ID'];
+    $pid = $row['id'];
     $name = $row['ProductName'];
     $quantity = $row['Quantity'];
     $Price = $row['UnitPrice'];
@@ -20,13 +20,14 @@ $db = mysqli_select_db($connection,"dbcrud");
 if(isset($_POST['submit']))
 {
 $edit = $_GET['edit'];
-$name = $_POST['name'];
-$address = $_POST['address'];
-$mobile = $_POST['mobile'];
-$sql = "update inventory set name= '$name',address= '$address',mobile='$mobile' where id =  '$edit'";
-if(mysqli_query($connection,$sql))
+$name = $_POST['ProductName'];
+$quantity = $_POST['Quantity'];
+$Price = $_POST['UnitPrice'];
+$supplier = $_POST['Supplier'];
+$sql = "update inventory set ProductName= '$name',Quantity= '$quantity',UnitPrice='$Price',Supplier='$Supplier' where id =  '$edit";
+if(mysqli_Query($connection,$sql))
 {
-echo '<script> location.replace("index.php")</script>';
+echo '<script > location.replace("index.php")</script>';
 }
 else
 {
@@ -50,21 +51,25 @@ echo "Some thing Error" . $connection->error;
 <div class="col-md-9">
 <div class="card">
 <div class="card-header">
-<h1> Inveentory </h1>
+<h1> Inventory </h1>
 </div>
 <div class="card-body">
 <form action="add.php" method="post">
 <div class="form-group">
-<label>Name</label>
-<input type="text" name="name" class="form-control"  placeholder="Enter Name" value="<?php echo $name; ?>">
+<label>Product Name</label>
+<input type="text" name="ProductName" class="form-control"  placeholder="Enter Name" value="<?php echo $name; ?>">
 </div>
 <div class="form-group">
-<label>Address</label>
-<input type="text" name="address" class="form-control"  placeholder="Enter Address" value="<?php echo $address ?>">
+<label>Quantity</label>
+<input type="text" name="Quantity" class="form-control"  placeholder="Enter Quantity" value="<?php echo $quantity;?>">
 </div>
 <div class="form-group">
-<label>Mobile</label>
-<input type="text" name ="mobile" class="form-control"  placeholder="Enter Mobile" value="<?php echo $mobile ?>">
+<label>Unit Price</label>
+<input type="text" name ="UnitPrice" class="form-control"  placeholder="Enter Price" value="<?php echo $Price; ?>">
+</div>
+<div class="form-group">
+<label>Supplier</label>
+<input type="text" name ="Supplier" class="form-control"  placeholder="Enter Supplier Name" value="<?php echo $supplier; ?>">
 </div>
 <br/>
 <input type="submit" class="btn btn-primary" name="submit" value="Edit">
