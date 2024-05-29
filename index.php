@@ -24,7 +24,7 @@
 <table class="table">
 <thead>
 <tr>
-<th scope="col">#ID</th>
+<th scope="col">ID</th>
 <th scope="col">Product Name</th>
 <th scope="col">Quantity</th>
 <th scope="col">Unit Price</th>
@@ -41,14 +41,14 @@ $run = mysqli_query($connection, $sql);
 $id= 1;
 while($row = mysqli_fetch_array($run))
 {
-$pid = $row['#ID'];
+$pid = $row['id'];
 $name = $row['ProductName'];
 $quantity = $row['Quantity'];
 $Price = $row['UnitPrice'];
 $supplier = $row['Supplier']
 ?>
 <tr>
-<td><?php echo $id ?></td>
+<td><?php echo $pid ?></td>
 <td><?php echo $name ?></td>
 <td><?php echo $quantity ?></td>
 <td><?php echo $Price ?></td>
