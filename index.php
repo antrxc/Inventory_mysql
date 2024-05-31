@@ -13,7 +13,7 @@
 <div class="col-md-9">
 <div class="card">
 <div class="card-header">
-<h1> Inventory </h1>
+<h1> Inventory Management</h1>
 </div>
 <div class="card-body">
 
